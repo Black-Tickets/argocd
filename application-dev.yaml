@@ -3,14 +3,12 @@ kind: Application
 metadata:
   name: ticketing-dev
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Ananth-UST/blacktickets.git
-    targetRevision: develop
-    path: helm/ticketing
+    repoURL: https://github.com/Black-Tickets/k8s_manifests.git
+    targetRevision: main
+    path: .
     helm:
       valueFiles:
         - values.yaml
@@ -24,3 +22,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
